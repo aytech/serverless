@@ -1,9 +1,15 @@
-module.exports.handler = async (event, context, done) => {
-  done(null, {
-    statusCode: 200,
-    headers: {},
-    body: JSON.stringify({
-      message: 'Hello from AWS API'
-    })
-  })
+const express = require('express');
+const http = require('serverless-http');
+const app = express();
+
+app.get('/', (req, res) => {
+  res.json({
+    message: 'ok'
+  });
+});
+const handler = http(app);
+console.log('Handler: ', handler);
+
+module.exports.handler = (...args) => {
+  return handler(...args);
 };

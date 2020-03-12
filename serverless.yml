@@ -68,22 +68,23 @@ functions:
   api:
     handler: src/api.handler
     events:
-      - http: GET /api
-  todo:
-    handler: src/todo.handler
-    events:
-      - http:
-          path: /todo/{id}
-          method: GET
-          request:
-            parameters:
-              id: true
-  todos:
-    handler: src/todos.handler
-    events:
-      - http:
-          path: /todos
-          method: GET
+      - http: ANY /
+      - http: 'ANY /{param+}'
+#  todo:
+#    handler: src/todo.handler
+#    events:
+#      - http:
+#          path: /todo/{id}
+#          method: GET
+#          request:
+#            parameters:
+#              id: true
+#  todos:
+#    handler: src/todos.handler
+#    events:
+#      - http:
+#          path: /todos
+#          method: GET
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
